@@ -1,0 +1,30 @@
+Documentation for HSA Tutoring App:
+
+This is a tutoring app for HSA designed to allow students to request lesson slots, and tutors to confirm them.
+
+Users who already have an account may log in from the login page, and new users may register for an account. 
+New users, after creating a username and a password, are required to fill out a profile form. 
+This profile form includes information such as their name, email address, phone number, whether they are a tutor or student, and any additional comments they may have. 
+It is required that they include their name and email address, and whether they are a tutor or student.
+
+Students and tutors can access their lessons from clicking the link in the navigation bar, or the link on the index page.
+They can also see their contacts by clicking the link in the navigation bar, and also change their settings (they can change their password or update their profile) by clicking on the link in the navigation bar.
+
+In a student account, the lessons page has three tabs: upcoming, logs, and send a request.
+The logs tab has a list of the 30 most recent requests / lessons the student has made. The status column on the right indicates whether the lesson is yet to be confirmed (pending), has been confirmed, has been declined, or has been cancelled.
+The upcoming tab has a list of upcoming lessons for the student. Next to each lesson is a check box. The student can select check boxes corresponding to lessons they want to cancel, and click the orange 'cancel' button to cancel those lessons.
+The send a request tab is a form that the student fills out in order to request a lesson from a tutor. Note that the student is required to fill in the tutor username, not the tutor name. This is because the tutor username is unique per tutor, whereas the tutor name is not necessarily unique.
+
+In a tutor account, the lessons page has three tabs: upcoming, logs, and confirm.
+Similarly, he logs tab has a list of the 30 most recent lessons / requests which have been made to the tutor. 
+The upcoming tab has a list of upcoming lessons for the tutor. Next to each lesson is a check box. The tutor can select check boxes corresponding to lessons they want to cancel, and click the orange 'cancel' button to cancel those lessons.
+The confirm tab has a list of lesson requests. Each lessons has two check boxes: one for confirm and one for decline. The tutor can check the box they want for each lesson, and then click submit, in order to confirm / decline the lessons.
+
+The contacts page contains the contact details for all people the user has contacted or has been contacted by.
+For a student, this means the tutors they have sent requests to.
+For a tutor, this means the students they have received requests from.
+
+Users can also update their profiles and change their password. These links are located under the settings link in the navigation bar.
+
+
+

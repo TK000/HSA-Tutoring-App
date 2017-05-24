@@ -1,0 +1,25 @@
+Design for HSA Tutoring App:
+
+This web app uses python and SQL to back end it, and javascript and HTML to front end it.
+I used these because we have used them in previous problem sets, meaning that I am familiar with them. Moreover, using them together is very powerful and efficient.
+
+In order to keep track of the registered users of the app, I created a SQL table called users, storing the users' usernames, password hashes, names, emails, phone numbers, and whether they are a student or tutor.
+I made this table, and included an id column so that it would be easy to look up users.
+
+In order to keep track of requests sent from students to tutors, I created a SQL table called requests.
+This table stores each lesson request's student id (ie the id number in the table users of the student who requested it), the tutor id, the date and time of the lesson, the duration of the lesson, the topic of the lesson, and the status of the lesson (ie whether it has been confirmed/declined/cancelled yet).
+I created this table because many of the pages in my app require information about lesson requests to be displayed.
+These pages include the logs page, the upcoming lessons page, and the confirm page.
+Thus creating this table is an efficient method of implementing these pages, since the implementation of these pages only requring searching for certain rows of this table.
+I decided to store the student ids and tutor ids in this table instead of their usernames, because it is easier to look up users by their ids in the table users.
+
+I implemented the confirming / declining / cancelling of requests by having checkboxes next to each lesson and a submit / cancel button.
+I did this because this allows the user to confirm / decline / cancel multiple requests at once, which is more efficient.
+Moreover, by impementing the table requests, confirming / declining / cancelling a request only requires changing the status attribute of the request, which is very simple. 
+The logs and upcoming pages are then automatically updated, since they are also linked to the table requests.
+
+I implemented javascript alerts for most of occurences when invalid data is entered in a form (for example in the profile form, register form, login form etc).
+I did this because this allows the user to be notified about the data they entered being invalid without having to reload the page.
+
+I implemented the contacts page by querying the table requests for rows containing the user's id, querying the table users for the contact information of the other users mentioned in these rows, and then creating a list of these contact details.
+I created this list, because it is very easy and efficient to append and delete elements from lists in python. Thus it is easy to ensure that this list contains exactly one copy of the contact details of each person the user has contacted.

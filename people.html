@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Contacts
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th><strong>Name</strong></th>
+            <th><strong>Username</strong></th>
+            <th><strong>Email</strong></th>
+            <th><strong>Phone Number</strong></th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <ul>
+        {% for person in people %}
+    
+        <tr>
+            <td>{{person["name"]}}</td>
+            <td>{{person["username"]}}</td>
+            <td>{{person["email"]}}</td>
+            <td>{{person["phone"]}}</td>
+        </tr>
+        
+        {% endfor %}
+        </ul>
+    </tbody>
+</table>
+
+{% endblock %}

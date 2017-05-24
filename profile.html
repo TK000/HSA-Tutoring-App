@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+    <form onsubmit="return check(this)" class="form-horizontal" action="{{ url_for('profile') }}" method="post">
+  <fieldset>
+    <legend>Profile</legend>
+    <div class="form-group">
+      <label for="name" class="col-lg-2 control-label">Name</label>
+      <div class="col-lg-10">
+        <input autocomplete="off" style="width: 400px" autofocus class="form-control" name="name" id="name" placeholder="Name" type="text"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="col-lg-2 control-label">Email</label>
+      <div class="col-lg-10">
+        <input type="email" style="width: 400px" class="form-control" name="email" id="email" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone" class="col-lg-2 control-label">Phone Number</label>
+      <div class="col-lg-10">
+        <input type="tel" style="width: 400px" class="form-control" name="phone" id="phone" placeholder="Phone Number">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="additionalinfo" class="col-lg-2 control-label">Additional Information</label>
+      <div class="col-lg-10">
+        <textarea class="form-control" style="width: 400px" rows="3" name="textArea"></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="select" class="control-label"></label>
+        <p>I am a
+        <select class="form-control" name="role" id="role">
+          <option value="select">Select:</option>
+          <option value="tutor">Tutor</option>
+          <option value="student">Student</option>
+        </select></p><br>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </fieldset>
+</form>
+
+<script>
+// makes sure fields are not left blank
+function check() 
+{ 
+    var name = document.getElementById('name').value; 
+    var role = document.getElementById('role').value; 
+    var email = document.getElementById('email').value; 
+    if(!name.match(/\S/)) 
+    {
+        alert ('Fill in your name');
+        return false;
+    } 
+    if(role == "select") 
+    {
+        alert ('Are you a tutor or a student?');
+        return false;
+    }
+    if(!email.match(/\S/)) 
+    {
+        alert ('Fill in your email');
+        return false;
+    }
+}
+</script>
+{% endblock %}

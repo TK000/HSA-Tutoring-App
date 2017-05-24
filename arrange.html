@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Request a lesson
+{% endblock %}
+
+{% block main %}
+<ul class="nav nav-tabs">
+  <li><a href="{{ url_for('upcoming') }}">Upcoming</a></li>
+  <li><a href="{{ url_for('logs') }}">Logs</a></li>
+  <li class="active"><a href="{{ url_for('arrange') }}">Send a request</a></li>
+</ul>
+
+    <form onsubmit="return check(this)" class="form-horizontal" action="{{ url_for('arrange') }}" method="post">
+  <fieldset>
+    <legend>Request a lesson</legend>
+    <div class="form-group">
+      <label for="tutor_username" class="col-lg-2 control-label">Tutor username</label>
+      <div class="col-lg-10">
+        <input autocomplete="off" style="width: 400px" autofocus class="form-control" name="tutor_username" placeholder="Tutor username" type="text" id="tutor_username"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="date" class="col-lg-2 control-label">Date</label>
+      <div class="col-lg-10">
+        <input type="text" style="width: 60px" class="form-control" name="month" placeholder="MM" id="month">/
+        <input type="text" style="width: 60px" class="form-control" name="day" placeholder="DD" id="day">/
+        <input type="text" style="width: 60px" class="form-control" name="year" placeholder="YY" id="year">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="start_time" class="col-lg-2 control-label">Start time</label>
+      <div class="col-lg-10">
+        <input type="text" style="width: 90px" class="form-control" name="start_hour" placeholder="Hour" id="hour">:
+        <input type="text" style="width: 90px" class="form-control" name="start_minute" placeholder="Minute" id="minute">
+        <label for="select" class="control-label"></label>
+        <select class="form-control" name="am_pm">
+          <option value="0">AM</option>
+          <option value="12">PM</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="duration" class="col-lg-2 control-label">Duration</label>
+      <div class="col-lg-10">
+        <input type="text" style="width: 120px" class="form-control" name="duration" placeholder="Duration" id="duration"> hour(s)
+      </div>
+    </div>
+        <div class="form-group">
+      <label for="topic" class="col-lg-2 control-label">Topic</label>
+      <div class="col-lg-10">
+        <input type="text" style="width: 400px" class="form-control" name="topic" placeholder="Topic" id="topic">
+      </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </fieldset>
+</form>
+
+<script>
+// makes sure fields are not left blank, and entries are valid
+function check() 
+{ 
+    var tutor = document.getElementById('tutor_username').value; 
+    var topic = document.getElementById('topic').value; 
+    var year = document.getElementById('year').value; 
+    var month = document.getElementById('month').value; 
+    var day = document.getElementById('day').value; 
+    var hour = document.getElementById('hour').value; 
+    var minute = document.getElementById('minute').value; 
+    var duration = document.getElementById('duration').value; 
+    
+    // check fields are not empty
+    if((!tutor.match(/\S/) || !topic.match(/\S/)) || !duration.match(/\S/)) 
+    {
+        alert ('Field cannot be left empty');
+        return false;
+    } 
+    // check fields are numerical
+    if((((year != parseInt(year, 10) || month != parseInt(month, 10)) || day != parseInt(day, 10)) || hour != parseInt(hour, 10)) || minute != parseInt(minute, 10)) 
+    {
+        alert ('Invalid date or time');
+        return false;
+    }
+}
+</script>
+{% endblock %}

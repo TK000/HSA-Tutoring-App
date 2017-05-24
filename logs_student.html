@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<ul class="nav nav-tabs">
+  <li><a href="{{ url_for('upcoming') }}">Upcoming</a></li>
+  <li class="active"><a href="{{ url_for('logs') }}">Logs</a></li>
+  <li><a href="{{ url_for('arrange') }}">Send a request</a></li>
+</ul>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th><strong>Date</strong></th>
+            <th><strong>Start Time</strong></th>
+            <th><strong>Duration</strong></th>
+            <th><strong>Tutor</strong></th>
+            <th><strong>Subject</strong></th>
+            <th><strong>Status</strong></th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <ul>
+        {% for row in rows %}
+    
+        <tr>
+            <td>{{row["month"]}}/{{row["day"]}}/{{row["year"]}}</td>
+            <td>{{row["start_hour"]}}:{{row["start_minute"]}}</td>
+            <td>{{row["duration"]}} hours</td>
+            <td>{{row["tutor_name"]}} ({{row["tutor_username"]}})</td>
+            <td>{{row["topic"]}}</td>
+            <td>{{row["status"]}}</td>
+        </tr>
+        
+        {% endfor %}
+        </ul>
+    </tbody>
+</table>
+
+{% endblock %}

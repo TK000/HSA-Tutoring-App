@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <img class="img-responsive" align="middle" src="http://s3-media1.fl.yelpcdn.com/bphoto/oR5vL6IqvtEsQPpVBJ2-0Q/o.jpg"/>
+    <form onsubmit="return check(this)" action="{{ url_for('login') }}" method="post">
+        <fieldset>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="password" placeholder="Password" type="password"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Log In</button>
+            </div>
+            <p>
+                Or <a href="{{ url_for('register') }}">register</a> for an account
+            </p>
+        </fieldset>
+    </form>
+    
+<script>
+// check that the fields are not empty
+function check() 
+{ 
+    var username = document.getElementById('username').value; 
+    var password = document.getElementById('password').value; 
+    var confirmation = document.getElementById('confirmation').value; 
+    if(!username.match(/\S/) || !password.match(/\S/))
+    {
+        alert ('Field cannot be left empty');
+        return false;
+    } 
+}
+</script>
+{% endblock %}
+
+

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<form onsubmit="return check(this)" action="{{ url_for('register') }}" method="post">
+        <fieldset>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text" id="username"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="password" placeholder="Password" type="password" id="password"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="confirmation" placeholder="Confirmation" type="password" id="confirmation"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Register</button>
+            </div>
+            <p>
+                Already have an account? <a href="{{ url_for('login') }}">Log In</a>
+            </p>
+        </fieldset>
+    </form>
+    
+<script>
+// checks no fields are left blank, and that password and confirmation match
+function check() 
+{ 
+    var username = document.getElementById('username').value; 
+    var password = document.getElementById('password').value; 
+    var confirmation = document.getElementById('confirmation').value; 
+    if((!username.match(/\S/) || !password.match(/\S/)) || !confirmation.match(/\S/)) 
+    {
+        alert ('Field cannot be left empty');
+        return false;
+    }
+    if(confirmation != password)
+    {
+        alert ('Password and confirmation must match');
+        return false;
+    }
+}
+</script>
+{% endblock %}
+

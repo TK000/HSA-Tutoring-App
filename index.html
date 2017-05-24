@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<div class="well">
+  <h1>Welcome!</h1>
+</div>
+
+
+  <div class="col-sm-6">
+  <div class="jumbotron">
+    <h2><a href="{{ url_for('upcoming') }}">My lessons</a></h2>
+    <img class="img-responsive" src="http://edge.alluremedia.com.au/m/k/2014/05/Pen-and-paper-istock.jpg"/>
+    <p>View and request lessons</p>
+  </div>
+  </div>
+  <div class="col-sm-6">
+  <div class="jumbotron">
+    <h2><a href="{{ url_for('profile') }}">Settings</a></h2>
+    <img class="img-responsive" src="http://www.thecontech.com/wp-content/uploads/2016/02/settings_logo.jpg"/>
+    <p>Edit your profile and/or password</p>
+  </div>
+  </div>
+
+{% endblock %}
+

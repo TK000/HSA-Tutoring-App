@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<ul class="nav nav-tabs">
+  <li><a href="{{ url_for('upcoming') }}">Upcoming</a></li>
+  <li><a href="{{ url_for('logs') }}">Logs</a></li>
+  <li class="active"><a href="{{ url_for('respond') }}">Confirm</a></li>
+</ul>
+
+<form class="form" action="{{ url_for('confirm') }}" method="post">
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th><strong>Date</strong></th>
+            <th><strong>Start Time</strong></th>
+            <th><strong>Duration</strong></th>
+            <th><strong>Student</strong></th>
+            <th><strong>Subject</strong></th>
+            <th><strong>Confirm</strong></th>
+            <th><strong>Decline</strong></th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <ul>
+        {% for row in rows %}
+        <tr></tr>
+            <td>{{row["month"]}}/{{row["day"]}}/{{row["year"]}}</td>
+            <td>{{row["start_hour"]}}:{{row["start_minute"]}}</td>
+            <td>{{row["duration"]}} hours</td>
+            <td>{{row["student_name"]}} ({{row["student_username"]}})</td>
+            <td>{{row["topic"]}}</td>
+            <td><input type="checkbox" value="{{row['id']}}" name="confirm" id="checkbox"></td>
+            <td><input type="checkbox" value="{{row['id']}}" name="decline" id="checkbox"></td>
+        </tr>
+        
+        {% endfor %}
+        </ul>
+    </tbody>
+</table>
+
+<div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</form>
+{% endblock %}

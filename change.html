@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change Password
+{% endblock %}
+
+{% block main %}
+    <form onsubmit="return check(this)" action="{{ url_for('change') }}" method="post">
+        <fieldset>
+            <div class="form-group">
+                <input class="form-control" name="password" placeholder="Password" type="password" id="password"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="confirmation" placeholder="Confirmation" type="password" id="confirmation"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Submit</button>
+            </div>
+        </fieldset>
+    </form>
+    
+<script>
+// checks no fields are left blank, and that password and confirmation match
+function check() 
+{ 
+    var password = document.getElementById('password').value; 
+    var confirmation = document.getElementById('confirmation').value; 
+    if(!password.match(/\S/) || !confirmation.match(/\S/)) 
+    {
+        alert ('Field cannot be left empty');
+        return false;
+    }
+    if(confirmation != password)
+    {
+        alert ('Password and confirmation must match');
+        return false;
+    }
+}
+</script>
+{% endblock %}
